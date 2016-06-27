@@ -602,8 +602,8 @@ def kepler(r0, v0, dt, mu=Earth.mu, tol=1E-6):
     g = dt - (chi**3/np.sqrt(mu))*c3
     g_dot = 1.0 - (chi**2/r)*c2
     f_dot = (np.sqrt(mu)/(r*r_mag))*chi*(psi*c3 - 1.0)
-    r_vec = f*r0 + g*v0
-    v_vec = f_dot*r0 + g_dot*v0
+    r_vec = f[0,0]*r0 + g[0,0]*v0
+    v_vec = f_dot[0,0]*r0 + g_dot[0,0]*v0
     
     return r_vec, v_vec
    
