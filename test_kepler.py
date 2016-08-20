@@ -11,13 +11,8 @@ import kepler
 import math
 import numpy as np
 
-class ExamplesFromBookTestCase(unittest.TestCase):
+class KeplerExamplesFromBookTestCase(unittest.TestCase):
     
-#    def create_assertEqual_msg(self, actual, expected):
-#        message = ('The expected value was {expected_str}, '
-#            'but the function returned {actual_str}').format(
-#            expected_str=expected, actual_str=actual)
-#        return message
     
     def test_example_2_1_Keplers_Equation(self):
         M = 235.4
@@ -75,7 +70,7 @@ class ExamplesFromBookTestCase(unittest.TestCase):
         self.assertAlmostEqual(tanoma, tanome, places=3)
          
 def test_main():
-        support.run_unittest(ExamplesFromBookTestCase)
+        support.run_unittest(KeplerExamplesFromBookTestCase)
         
 if __name__ == '__main__':
         test_main()
