@@ -31,3 +31,25 @@ def find_gmst(jd_ut1):
 def find_lst(theta_gmst, lon):
     theta_lst = theta_gmst + lon
     return theta_lst
+    
+def dms2rad(degrees, minutes, seconds):
+    rad = (degrees + minutes/60.0 + seconds/3600.0)*(math.pi/180.0)
+    return rad
+    
+def rad2dms(rad):
+    temp = rad*(180.0/math.pi)
+    degrees = np.trunc(temp)
+    minutes = np.trunc((temp - degrees)*60.0)
+    seconds = (temp - degrees - minutes/60.0)*3600.0
+    return (degrees, minutes, seconds)
+    
+def hms2rad(hours, minutes, seconds):
+    rad = 15*(hours + minutes/60.0 + seconds/3600.0)*math.pi/180.0
+    return rad
+    
+def rad2hms(rad):
+    temp = rad*180.0/(15.0*math.pi)
+    hours = np.trunc(temp)
+    minutes = np.trunc((temp - hours)*60.0)
+    seconds = (temp - hours - minutes/60.0)*3600.0
+    return (hours, minutes, seconds)

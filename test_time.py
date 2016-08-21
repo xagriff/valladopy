@@ -43,6 +43,48 @@ class TimeExamplesFromBookTestCase(unittest.TestCase):
         self.assertAlmostEqual(act_theta_gmst, exp_theta_gmst)
         self.assertAlmostEqual(act_theta_lst, exp_theta_lst)
         
+    def test_example_3_8_dms2rad(self):
+        degrees = -35.0
+        minutes = -15.0
+        seconds = -53.63
+        
+        act_rad = astro_time.dms2rad(degrees, minutes, seconds)
+        exp_rad = -0.6154886
+        
+        self.assertAlmostEqual(act_rad, exp_rad)
+        
+    def test_example_3_8_rad2dms(self):
+        rad = -0.6154886
+        
+        (act_deg, act_min, act_sec) = astro_time.rad2dms(rad)
+        exp_deg = -35.0
+        exp_min = -15.0
+        exp_sec = -53.6368
+        
+        self.assertEqual(act_deg, exp_deg)
+        self.assertEqual(act_min, exp_min)
+        self.assertAlmostEqual(act_sec, exp_sec, 4)
+        
+    def test_example_3_9_hms2rad(self):
+        hours = 15
+        minutes = 15
+        seconds = 53.63
+        
+        act_rad = astro_time.hms2rad(hours, minutes, seconds)
+        exp_rad = 3.996341
+        
+        self.assertAlmostEqual(act_rad, exp_rad, 6)
+        
+    def test_example_3_9_rad2hms(self):
+        rad = 3.996341
+        (act_hrs, act_min, act_sec) = astro_time.rad2hms(rad)
+        exp_hrs = 15
+        exp_min = 15
+        exp_sec = 53.63
+        
+        self.assertEqual(act_hrs, exp_hrs)
+        self.assertEqual(act_min, exp_min)
+        self.assertAlmostEqual(act_sec, exp_sec, 2)
         
         
 def test_main():
