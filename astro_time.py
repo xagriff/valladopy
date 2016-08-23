@@ -77,3 +77,33 @@ def time2hms(time_in_seconds):
 def hms2time(hours, minutes, seconds):
     tau = 3600.0*hours + 60.0*minutes + seconds
     return tau
+    
+def ymd2doy(year, month, day):
+    mos = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    if (is_leap_year(year)):
+        mos[1] = 29
+
+    idx = month - 1
+    
+    doy = np.sum(mos[:idx]) + day
+    return doy
+    
+def doy2ymd(day_of_year, year):
+    mos = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    if (is_leap_year(year)):
+        mos[1] = 29
+    
+    temp = 0
+    idx = 0
+    while (temp < day_of_year):
+        temp += mos[idx]
+        
+        if(temp >= day_of_year):
+            month = idx + 1
+            if (month == 1):
+                day = day_of_year
+            else:
+                day = day_of_year - np.sum(mos[:idx])
+            return (month, day)
+        
+        idx += 1
