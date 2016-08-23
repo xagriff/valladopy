@@ -53,3 +53,15 @@ def rad2hms(rad):
     minutes = np.trunc((temp - hours)*60.0)
     seconds = (temp - hours - minutes/60.0)*3600.0
     return (hours, minutes, seconds)
+    
+def is_leap_year(yr):
+    if (np.remainder(yr,4) != 0):
+        return False
+    else:
+        if (np.remainder(yr, 100) == 0):
+            if (np.remainder(yr, 400) == 0):
+                return True
+            else:
+                return False
+        else:
+            return True

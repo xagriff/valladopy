@@ -86,9 +86,32 @@ class TimeExamplesFromBookTestCase(unittest.TestCase):
         self.assertEqual(act_min, exp_min)
         self.assertAlmostEqual(act_sec, exp_sec, 2)
         
+class OtherTimeFunctionsTestCase(unittest.TestCase):
+    
+    def test_is_leap_year(self):
+        
+        y1 = 1996
+        y2 = 1900
+        y3 = 2000
+        y4 = 2005
+        y5 = 2100
+        
+        b1 = astro_time.is_leap_year(y1)
+        b2 = astro_time.is_leap_year(y2)
+        b3 = astro_time.is_leap_year(y3)
+        b4 = astro_time.is_leap_year(y4)
+        b5 = astro_time.is_leap_year(y5)
+        
+        self.assertEqual(b1, True)
+        self.assertEqual(b2, False)
+        self.assertEqual(b3, True)
+        self.assertEqual(b4, False)
+        self.assertEqual(b5, False)
+        
         
 def test_main():
         support.run_unittest(TimeExamplesFromBookTestCase)
+        support.run_unittest(OtherTimeFunctionsTestCase)
         
 if __name__ == '__main__':
         test_main()
