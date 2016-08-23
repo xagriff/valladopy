@@ -86,6 +86,26 @@ class TimeExamplesFromBookTestCase(unittest.TestCase):
         self.assertEqual(act_min, exp_min)
         self.assertAlmostEqual(act_sec, exp_sec, 2)
         
+    def test_example_3_10_time2hms(self):
+        tau = 48165.98
+        (act_hrs, act_min, act_sec) = astro_time.time2hms(tau)
+        exp_hrs = 13
+        exp_min = 22
+        exp_sec = 45.98
+        
+        self.assertEqual(act_hrs, exp_hrs)
+        self.assertEqual(act_min, exp_min)
+        self.assertAlmostEqual(act_sec, exp_sec, 2)
+        
+    def test_example_3_10_hms2time(self):
+        hours = 13
+        minutes = 22
+        seconds = 45.98
+        act_time = astro_time.hms2time(hours, minutes, seconds)
+        exp_time = 48165.98
+        
+        self.assertAlmostEqual(act_time, exp_time, 2)
+        
 class OtherTimeFunctionsTestCase(unittest.TestCase):
     
     def test_is_leap_year(self):

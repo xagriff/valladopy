@@ -65,3 +65,15 @@ def is_leap_year(yr):
                 return False
         else:
             return True
+            
+def time2hms(time_in_seconds):
+    temp = time_in_seconds/3600.0
+    hours = np.trunc(temp)
+    minutes = np.trunc((temp - hours)*60)
+    seconds = (temp - hours - minutes/60)*3600
+    
+    return (hours, minutes, seconds)
+    
+def hms2time(hours, minutes, seconds):
+    tau = 3600.0*hours + 60.0*minutes + seconds
+    return tau
