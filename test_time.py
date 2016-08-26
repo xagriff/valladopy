@@ -153,6 +153,23 @@ class TimeExamplesFromBookTestCase(unittest.TestCase):
         self.assertEqual(act_min, exp_min)
         self.assertAlmostEqual(act_sec, exp_sec, 5)
         
+    def test_example_3_13_jd2gregorian(self):
+        jd = 2449877.3458762
+        (act_yr, act_mo, act_day, act_hr, act_min, act_sec) = astro_time.jd2gregorian(jd)
+        exp_yr = 1995
+        exp_mo = 6
+        exp_day = 8
+        exp_hr = 20
+        exp_min = 18
+        exp_sec = 3.70368
+        
+        self.assertEqual(act_yr, exp_yr)
+        self.assertEqual(act_mo, exp_mo)
+        self.assertEqual(act_day, exp_day)
+        self.assertEqual(act_hr, exp_hr)
+        self.assertEqual(act_min, exp_min)
+        self.assertAlmostEqual(act_sec, exp_sec, 4)
+        
 class OtherTimeFunctionsTestCase(unittest.TestCase):
     
     def test_is_leap_year(self):

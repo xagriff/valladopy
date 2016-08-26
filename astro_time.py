@@ -121,3 +121,17 @@ def days2ymdhms(days, year):
     (hours, minutes, seconds) = time2hms(tau)
     
     return (month, day, hours, minutes, seconds)
+    
+def jd2gregorian(jd):
+    t1900 = (jd - 2415019.5)/365.25
+    year = 1900 + np.trunc(t1900)
+    leap_years = np.trunc((year - 1900 - 1)*0.25)
+    days = (jd - 2415019.5) - ((year - 1900)*365.0 + leap_years)
+    
+    if days < 1.0:
+        year = year - 1
+        leap_years = np.trunc((year - 1900 - 1)*0.25)
+        days = (jd - 2415019.5) - ((year - 1900)*365.0 + leap_years)
+        
+    (month, day, hours, minutes, seconds) = days2ymdhms(days, year)
+    return (year, month, day, hours, minutes, seconds)
