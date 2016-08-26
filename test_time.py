@@ -125,6 +125,34 @@ class TimeExamplesFromBookTestCase(unittest.TestCase):
         self.assertEqual(act_mon, exp_mon)
         self.assertEqual(act_day, exp_day)
         
+    def test_example_3_12_ymdhms2days(self):
+        yr = 2001
+        mo = 3
+        day = 18
+        hrs =12
+        mins = 14
+        sec = 0.0
+        act_days = astro_time.ymdhms2days(yr, mo, day, hrs, mins, sec)
+        exp_days = 77.5097222
+        
+        self.assertAlmostEqual(act_days, exp_days)
+        
+    def test_example_3_12_days2ymdhms(self):
+        days = 77.5097222
+        year = 2001
+        (act_mo, act_day, act_hrs, act_min, act_sec) = astro_time.days2ymdhms(days, year)
+        exp_mo = 3
+        exp_day = 18
+        exp_hrs = 12
+        exp_min = 13
+        exp_sec = 59.99808
+        
+        self.assertEqual(act_mo, exp_mo)
+        self.assertEqual(act_day, exp_day)
+        self.assertEqual(act_hrs, exp_hrs)
+        self.assertEqual(act_min, exp_min)
+        self.assertAlmostEqual(act_sec, exp_sec, 5)
+        
 class OtherTimeFunctionsTestCase(unittest.TestCase):
     
     def test_is_leap_year(self):

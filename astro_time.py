@@ -107,3 +107,17 @@ def doy2ymd(day_of_year, year):
             return (month, day)
         
         idx += 1
+        
+def ymdhms2days(year, month, day, hour, minutes, seconds):
+    doy = ymd2doy(year, month, day)
+    days = doy + hour/24.0 + minutes/1440.0 + seconds/86400.0
+    return days
+    
+def days2ymdhms(days, year):
+    doy = np.trunc(days)
+    (month, day) = doy2ymd(doy, year)
+    
+    tau = (days - doy)*86400.0
+    (hours, minutes, seconds) = time2hms(tau)
+    
+    return (month, day, hours, minutes, seconds)
