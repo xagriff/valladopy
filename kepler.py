@@ -25,7 +25,7 @@ def find_c2c3(psi):
     -------
     c2: double
         c2 coefficient in universal formulation of Kepler's Equation
-    c3: double, coefficient
+    c3: double
         c3 coefficient in universal formulation of Kepler's Equation
     """
 
